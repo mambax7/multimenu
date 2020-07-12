@@ -1,0 +1,11 @@
+      <ul>
+        <{foreach item=item from=$block.datas}>
+          <li>
+              <a href="<{$block.xoops_url}>/modules/multimenu/item.php?id=<{$item.id}>"
+                 title="<{$item.description}>"
+              >
+              <{$item.title}>
+              </a>
+          </li>
+        <{/foreach}>
+      </ul>

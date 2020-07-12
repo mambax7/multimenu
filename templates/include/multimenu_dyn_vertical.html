@@ -1,0 +1,51 @@
+<!-- Start multiMenu <{$menu}> -->
+
+<!--[if gte IE 5.5]>
+<iframe id="dropmenuiframe<{$menu}>" src="" style="z-index:99;display:none;position:absolute;"></iframe>
+<![endif]-->
+
+<script language="JavaScript" type="text/javascript">
+<{foreach item=item from=$data_list}>
+<{if $item.link_status==top || $item.link_status==link}>
+<{assign value=$item.id var=mainlink_num}>
+          var menu_<{$mainlink_num}>=new Array();
+          <{assign var=count value=1}>
+<{elseif $item.link_status==sublink}>
+          menu_<{$mainlink_num}>[<{$count}>]='<a href="<{$item.link}>"<{$item.target}><{if $item.css}> style="<{$item.css}>"<{/if}>><{if $item.image}><img src="<{$item.image}>"<{if $image_width}><{$image_width}><{/if}><{if $image_height}> width="<{$image_height}>"<{/if}> align="absmiddle" /><{/if}><{$item.title|addslashes}></a>';
+          <{assign var=count value=$count+1}>
+<{/if}>
+<{/foreach}>
+</script>
+
+<script language="JavaScript"
+        type="text/javascript"
+        src="<{$xoops_url}><{$script_link}>">
+</script>
+
+
+<!-- Render Sublink datas -->
+<div id="navcontainer" style="width:160px;">
+
+  <table>
+  <tr><td id="mainmenu">
+  <{foreach item=item from=$data_list}>
+  <{if  $item.link_status==top || $item.link_status==link }>
+  		<a title="<{$item.alt_title}>" class="<{if $item.link_status==top}>menuTop<{elseif $item.link_status==link}>menuMain<{/if}>"
+  		<{if $item.link}><{$item.target}>
+                 href="<{$item.link}>"<{if $item.css}> style="<{$item.css}>"<{/if}><{else}>style="cursor:pointer;" onClick="return clickreturnvalue_vert_<{$menu}>();"<{/if}>
+                 <{if $item.has_sub}>onMouseover="dropdownmenu_vert_<{$menu}>(this, event, menu_<{$item.id}>, menuwidth_vert_<{$menu}>);"
+  		 onMouseout="delayhidemenu_vert_<{$menu}>();"<{/if}>>
+  		 <{if $item.image}><img src="<{$item.image}>"<{if $image_width}> width="<{$image_width}>"<{/if}><{if $image_height}> height="<{$image_height}>"<{/if}> align="absmiddle" /><{/if}>
+  		<{if ($item.link_status==top || $item.link_status==link) && $item.has_sub}>
+                  <img src="<{$xoops_url}>/modules/multimenu/templates/include/multimenu_dyn_vertical/arrow_right.gif"
+                       alt="<{$item.alt_title}>"
+                       align="right" />
+                  <{/if}>
+  		<{$item.title}>
+  		</a>
+   <{/if}>
+  <{/foreach}>
+  </td></tr>
+  </table>
+
+</div>

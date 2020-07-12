@@ -1,0 +1,22 @@
+<table cellspacing="0">
+       <tr>
+          <td id="mainmenu">
+          <a class="menuTop" 
+             href="<{$block.xoops_url}>/modules/multimenu/"
+             title=""
+          >
+          <{$block.home}>
+          </a>
+             <!-- start item menu loop -->
+             <{foreach item=item from=$block.datas}>
+                  <a class="menuMain" 
+                     href="<{$block.xoops_url}>/modules/multimenu/item.php?id=<{$item.id}>"
+                     title="<{$item.description}>"
+                  >
+                  <{$item.title}>
+                  </a>
+             <{/foreach}>
+             <!-- end module menu loop -->
+          </td>
+       </tr>
+</table>

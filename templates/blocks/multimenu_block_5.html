@@ -1,0 +1,39 @@
+
+<{if $block.css_link}>
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}><{$block.css_link}>" />
+<{/if}>
+
+<{if $block.css}>
+<style type="text/css">
+<{$block.css}>
+</style>
+<{/if}>
+
+<{$block.description}>
+
+<{assign value=$block.id               var=id}>
+<{assign value=$block.menu             var=menu}>
+<{assign value=$block.background       var=background}>
+<{assign value=$block.script_link      var=script_link}>
+<{assign value=$block.status           var=status}>
+<{assign value=$block.title            var=title}>
+<{assign value=$block.description      var=description}>
+<{assign value=$block.ii               var=ii}>
+<{assign value=$block.i                var=i}>
+<{assign value=$block.i_main           var=i_main}>
+<{assign value=$block.module           var=module}>
+<{assign value=$block.image_width      var=image_width}>
+<{assign value=$block.image_height     var=image_height}>
+<{assign value=$block.cols             var=cols}>
+<{assign value=$block.duration         var=duration}>
+<{assign value=$block.transition       var=transition}>
+<{assign value=$block.item             var=item}>
+<{assign value=$block.mode             var=mode}>
+
+<{assign value=$block.data_list        var=data_list}>
+
+<{include file="db:$mode"}>
+
+<{if $block.admin}><hr />
+<div align="right"><{$block.admin}></div>
+<{/if}>

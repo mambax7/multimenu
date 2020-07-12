@@ -1,0 +1,78 @@
+<{assign var=ul value=0}>
+
+<script language="JavaScript"
+        type="text/javascript" 
+        src="<{$xoops_url}><{$script_link}>">
+</script>
+        
+<ul id="menuModel" style="display:none">
+<{foreach item=item from=$data_list}>
+<{if $previous_status==sublink AND $item.link_status==link}>
+<{section name=foo start=0 loop=$ul step=1}></li>
+</ul>
+<{/section}>
+<{assign var=ul value=0}>
+ <{/if}>
+<{if ($previous_status==top OR $previous_status==link) AND $item.link_status==sublink}>
+<{assign var=ul value=$ul+1}>
+
+  <ul width="160">
+<{/if}>
+<{if ($previous_status==sublink AND $previous_pid!=$item.pid) AND $item.link_status==sublink}>
+<{if $ul==1}>
+<{assign var=ul value=$ul+1}>
+
+    <ul width="160">
+<{else}>
+<{section name=foo start=0 loop=1 step=1}>
+   </li>
+  </ul> 
+<{/section}>
+</li>
+<{assign var=ul value=1}>
+  <{/if}>
+<{/if}>
+<{if ($previous_status==top AND $item.link_status==link)
+  OR ($previous_status==link AND $item.link_status==link)
+  OR ($previous_status==sublink AND $item.link_status==sublink AND $previous_pid==$item.pid)}></li>
+<{/if}>
+     <{if $item.link_status==sublink}>
+       <{assign var=item_id value=$item_id+1}>
+     <{else}>
+       <{assign var=item_id value=$item.id}>
+       <{assign var=item_id value=$item_id*100}>
+     <{/if}>
+     <li id="<{$item_id}>"
+     <{if $item.image}>itemIcon="<{$item.image}>"<{/if}>>
+     <a href="<{$item.link}>"
+      title="<{$item.alt_title}>"
+      <{if $item.css}>style="<{$item.css}>"<{/if}>
+   >
+   <{$item.title}>
+   </a>
+   <{assign var=previous_status value=$item.link_status}>
+   <{assign var=previous_pid value=$item.pid}>
+<{/foreach}>
+<{section name=ul start=0 loop=$ul step=1}>
+</li>
+</ul>
+<{/section}>
+
+</li>
+</ul>
+
+<div id="menuDiv<{$menu}>" style="width:99%;"></div>
+
+<script type="text/javascript">
+	var menuModel = new DHTMLSuite.menuModel();
+	menuModel.addItemsFromMarkup('menuModel');
+	menuModel.setMainMenuGroupWidth(00);	
+	menuModel.init();
+	
+	var menuBar = new DHTMLSuite.menuBar();
+	menuBar.addMenuItems(menuModel);
+	menuBar.setTarget('menuDiv<{$menu}>');
+	
+	menuBar.init();
+
+</script>

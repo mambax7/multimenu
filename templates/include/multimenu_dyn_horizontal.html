@@ -1,0 +1,55 @@
+<!-- Start multiMenu <{$menu}> -->
+
+<!--[if gte IE 5.5]>
+<iframe id="dropmenuiframe<{$menu}>" src="" style="z-index:99;display:none;position:absolute;"></iframe>
+<![endif]-->
+
+<script language="JavaScript" type="text/javascript">
+<{foreach item=item from=$data_list}>
+<{if $item.link_status==top || $item.link_status==link}>
+<{assign value=$item.id var=mainlink_num}>
+          var menu_<{$mainlink_num}>=new Array();
+          <{assign var=count value=0}>
+<{elseif $item.link_status==sublink}>
+          menu_<{$mainlink_num}>[<{$count}>]='<a href="<{$item.link}>"<{$item.target}><{if $item.css}> style="<{$item.css}>"<{/if}>><{if $item.image}><img src="<{$item.image}>"<{if $image_width}><{$image_width}><{/if}><{if $image_height}> width="<{$image_height}>"<{/if}> align="absmiddle" /><{/if}><{$item.title|addslashes}></a>';
+          <{assign var=count value=$count+1}>
+<{/if}>
+<{/foreach}>
+</script>
+
+<script language="JavaScript"
+        type="text/javascript" 
+        src="<{$xoops_url}><{$script_link}>">
+        </script>
+
+
+<!-- Render Sublink datas -->
+<div id="navcontainer">
+<nobr>
+  <ul>
+  <{foreach item=item from=$data_list}>
+  <{if  $item.link_status==top || $item.link_status==link }>
+  		<li class="multimenu">
+  		<a title="<{$item.alt_title}>"
+  		<{if $item.link}><{$item.target}> 
+                href="<{$item.link}>"<{if $item.css}> style="<{$item.css}>"<{/if}><{else}>style="cursor:pointer;" onClick="return clickreturnvalue_<{$menu}>();"<{/if}>
+                <{if $item.has_sub}>onMouseover="dropdownmenu_<{$menu}>(this, event, menu_<{$item.id}>, menuwidth_<{$menu}>);"
+  		onMouseout="delayhidemenu_<{$menu}>();"<{/if}>>
+          <{if  $item.link_status==top || $item.link_status==link }>
+  		<{if $item.has_sub}><img src="<{$xoops_url}>/modules/multimenu/templates/include/multimenu_dyn_horizontal/arrow_down.gif" alt="<{$item.alt_title}>" /><{/if}>
+  		<{if $item.image}><img src="<{$item.image}>"<{if $image_width}><{$image_width}><{/if}><{if $image_height}> width="<{$image_height}>"<{/if}> align="absmiddle" /><{/if}>
+  	<{else}>
+  		<li class="multimenu">
+  		<a title="<{$item.alt_title}>"
+  		<{if $item.link}><{$item.target}>
+                     href="<{$item.link}>"<{/if}>
+                <{if $item.css}>style="<{$item.css}>"<{/if}>>
+  	<{/if}> <{if $item.image}><img src="<{$item.image}>"<{if $image_width}><{$image_width}><{/if}><{if $image_height}> width="<{$image_height}>"<{/if}> align="absmiddle" /><{/if}>
+  		<{$item.title}>
+  		</a>
+  		</li>
+   <{/if}>
+  <{/foreach}>
+  </ul>
+  </nobr>
+</div>

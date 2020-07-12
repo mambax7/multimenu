@@ -1,0 +1,12 @@
+
+<div class="head"><{$other}> <{$item}></div>
+<div class="itemFoot">
+<ul><{foreach item=item from=$items_list}>
+    <li style="list-style: none; display:inline; background-color:White; border:1px <{if $item.id != $id}>outset<{else}>inset<{/if}> grey; margin:0px; padding:5px;">
+          <{if $item.id != $id}> <a href="<{$item.urw}>" title="<{$item.title}> "> <{/if}>
+          <{if $item.image}>        <img src="<{$item.image}>" alt="<{$item.title}>" /> <{else}> <{$item.title}> <{/if}>
+          <{if $item.id != $id}> </a> <{/if}>
+        </li>
+   <{/foreach}>
+</ul>
+</div>

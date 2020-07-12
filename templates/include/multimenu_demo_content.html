@@ -1,0 +1,69 @@
+<div id="ixt-header_wrap">
+ <div id="ixt-header">
+  <div id="ixt-header_content_wrap">
+   <div id="ixt-header_content">
+    <div id="ixt-demo-wrapper">
+     <div id="ixt-demo-inner">
+     
+
+<{assign var=i value=1}>
+<{foreach item=item from=$data_list}>
+
+<{if $item.link_status==top}>
+
+       <div id="ixt-democont<{$i}>" class="scrolling-content">
+       <div id="ixt-demo<{$i}>">
+       <h1><{$item.title}></h1><{$item.alt_title}>
+       <ul>
+
+       <{elseif $previous_status==sublink AND $item.link_status==sublink}>
+
+       <li>
+       <{if $item.link}><a href="<{$item.link}>" <{if $item.popgen}><{$item.popgen}><{else}><{$item.target}> <{/if}><{if $item.alt_title}>title="<{$item.alt_title}>" <{/if}><{if $item.css}>style="<{$item.css}>"<{/if}>><{/if}>
+       <{if $item.image}><img src="<{$item.image}>"<{if $item.alt_title}> alt="<{$item.alt_title}>"<{/if}> align="absmiddle" <{$image_width}><{$image_height}> /><{/if}>
+       <{$item.title}><{if $item.link}></a><br />
+       <span style="padding-left:24px;"><{$item.alt_title}></span><{/if}>
+        </li>
+
+        <{elseif $previous_status==sublink AND $item.link_status==link}>
+
+        <{assign var=i value=$i+1}>
+        </ul>
+       </div>
+      </div>
+      <div id="ixt-democont<{$i}>" class="scrolling-content">
+       <div id="ixt-demo<{$i}>">
+        <h1><{$item.title}></h1><{$item.alt_title}>
+        <ul>
+<{/if}>
+<{assign var=previous_status value=$item.link_status}>
+<{/foreach}>
+        </ul>
+       </div>
+      </div>
+
+     </div>
+    </div>
+   </div>
+  </div>
+  
+
+  <div id="ixt-header_buttons_wrap">
+   <div id="ixt-header_buttons">
+    <div id="ixt-demo-bar">
+     <ul id="ixt-buttons">
+
+<{assign var=i value=1}>
+<{foreach item=item from=$data_list}>
+<{if $item.link_status==top OR $item.link_status==link}>
+      <li id="ixt-but_demo<{$i}>"><a id="ixt-link<{$i}>" href="#" name="ixt-link<{$i}>" class="active" onClick="toggleActive(this);return false;"><div id="ixt-but_text"><{$item.title}></div></a></li>
+<{assign var=i value=$i+1}>
+      <{/if}>
+<{/foreach}>
+
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>

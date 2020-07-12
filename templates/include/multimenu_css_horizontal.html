@@ -1,0 +1,49 @@
+
+<ul>
+<{foreach item=item from=$data_list}>
+
+<{if $item.link_status==top || $item.link_status==link}>
+<{if $previous_status==sublink && $item.link_status==link}>
+                      </em></li><{/if}>
+
+                      <li   class="multimenu_tooltip">
+ <{if $item.link}>    <a     href="<{$item.link}>"
+                           <{$item.target}><{/if}>
+                           <{if $item.alt_title}>title="<{$item.alt_title}>"<{/if}>
+                           <{if $item.css}>style="<{$item.css}>"<{/if}>
+                      >
+                    
+                    <{if $item.image}>
+                      <img src="<{$item.image}>"
+                           <{if $item.alt_title}>alt="<{$item.alt_title}>"<{/if}>
+                           align="absmiddle"
+                           <{$image_width}><{$image_height}>
+                      />
+                      <{/if}>
+                      <{$item.title}>
+
+<{elseif $item.link_status==sublink}>
+<{if $previous_status==link || $previous_status==top}><em><span></span><{/if}>
+<{if $previous_status==sublink}><br /><br /><{/if}>
+<{if $item.link}>    <a
+          href="<{$item.link}>"
+                           <{$item.target}><{/if}>
+                           <{if $item.alt_title}>title="<{$item.alt_title}>"<{/if}>
+                           <{if $item.css}>style="<{$item.css}>"<{/if}>
+                      >
+                    <{if $item.image}>
+                      <img src="<{$item.image}>"
+                           <{if $item.alt_title}>alt="<{$item.alt_title}>"<{/if}>
+                           align="absmiddle"
+                           <{$image_width}><{$image_height}>
+                      />
+                      <{/if}>
+                      <{$item.title}>
+<{if $item.link}>     </a><{/if}>
+
+<{/if}>
+<{assign var=previous_status value=$item.link_status}>
+<{/foreach}>
+                      </li>
+</ul>
+

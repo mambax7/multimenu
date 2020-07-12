@@ -1,0 +1,44 @@
+.ejs_context_menuitems_link, .ejs_context_menuitems_top  {
+        font-weight:bold;
+	padding-left:6px; 
+	padding-right:6px;
+}
+
+.ejs_context_menuitems_sublink {
+	font-style:italic;
+        padding-left:12px; 
+	padding-right:6px;
+}
+
+.ejs_context_menuitems_link img, 
+.ejs_context_menuitems_top img, 
+.ejs_context_menuitems_sublink img {
+        width:48px;
+        margin-right: 13px;
+        border:2px outset black;
+}
+
+#ejs_context_box {
+        z-index:500;
+        position:absolute;
+        width:200px;
+        height:380px;
+        overflow:auto;
+        border:1px Outset Black;
+        background-color:White;
+        visibility:hidden;
+        padding:3px;
+        cursor:default;
+}
+
+#ejs_context_ombre {
+        z-index:400;
+        position:absolute;
+        width:200px;
+        height:380px;
+        overflow:auto;
+        border:1px solid #9D9DA1; 
+        background-color:#9D9DA1;
+        visibility:hidden;
+        padding:3px;
+}

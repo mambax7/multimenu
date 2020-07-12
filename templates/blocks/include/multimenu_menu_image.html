@@ -1,0 +1,39 @@
+<{counter start=1 print=false assign=count}>
+<{math assign=col_width equation="round(y / x)" x=$block.cols y=100}>
+
+<table>
+  <tr>
+            <{foreach item=item from=$block.datas}>
+                   <{if $count > $block.cols}>
+                            </tr>
+                            <tr>
+                       <{counter start=1 print=false assign=count}>
+                       <{/if}>
+                       <{counter print=false assign=count}>
+
+          <td width="<{$col_width}>%" align="center">
+
+                  <a
+                     href="<{$block.xoops_url}>/modules/multimenu/item.php?id=<{$item.id}>"
+                     title="<{$item.description}>"
+                  >
+                  <{if $item.logo}>
+                  <img src="<{$item.logo}>"
+                       style="width:<{$item.thumb_max_width}>px; border:2px outset grey; spacing:2px"
+                       alt="<{$item.title}> : <{$item.image_file}>"
+                  />
+                  <br />
+                  <{/if}>
+                  <{$item.title}>
+                  </a>
+          </td>
+
+          <{/foreach}>
+          <{math assign=last equation="x - y" x=$block.cols y=$count-1}>
+          <{section name=td loop=$last}>
+          <td>&nbsp;</td>
+          <{/section}>
+
+
+   </tr>
+ </table>

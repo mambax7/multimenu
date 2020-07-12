@@ -1,0 +1,35 @@
+
+<div id="ejs_context_box">
+
+<script language="JavaScript1.2">
+/*
+SCRIPT EDITE SUR L'EDITEUR JAVASCRIPT
+http://www.editeurjavascript.com
+*/
+ejs_context_elemt = new Array;
+<{foreach item=item from=$data_list}>
+<{assign var=title value=$item.title|strip_tags}>
+
+<{if $item.link_status==top}>
+     <{assign var=count value=0}>
+     ejs_context_elemt[<{$count}>] = "<{$title}>|<{$item.link_status}>|document.location.href='<{$item.link}>'|<{$item.image}>";
+<{elseif $item.link_status==link}>
+     <{assign var=count value=$count+1}>
+     ejs_context_elemt[<{$count}>] = '';
+     <{assign var=count value=$count+1}>
+     ejs_context_elemt[<{$count}>] = "<{$title}>|<{$item.link_status}>|document.location.href='<{$item.link}>'|<{$item.image}>";
+<{elseif $item.link_status==sublink}>
+     <{assign var=count value=$count+1}>
+     ejs_context_elemt[<{$count}>] = "<{$title}>|<{$item.link_status}>|document.location.href='<{$item.link}>'|<{$item.image}>";
+<{/if}>
+<{/foreach}>
+
+</script>
+
+<{if $script_link}>
+<script language="JavaScript"
+        type="text/javascript"
+        src="<{$xoops_url}><{$script_link}>">
+</script>
+<{/if}>
+

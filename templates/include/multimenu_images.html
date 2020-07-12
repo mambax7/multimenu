@@ -1,0 +1,34 @@
+<{assign var=i value=0}>
+<table>
+<{foreach item=item from=$data_list}>
+
+  <{if $item.link_status==top}><tr>
+  <{elseif $i>=$cols}></tr><tr><{assign var=i value=0}>
+  <{/if}><{assign var=i value=$i+1}>
+
+                  <td width="<{math equation="x/y" x=100 y=$cols format="%.0f"}>" 
+                      class="<{$item.link_status}>"
+                      align="center">
+                   <{if $item.link}>
+
+                      <a   href="<{$item.link}>"
+                           <{if $item.popgen}><{$item.popgen}><{else}>
+                           <{$item.target}>
+                           <{/if}>
+                           <{if $item.alt_title}>title="<{$item.alt_title}>"<{/if}>
+                           <{if $item.css}>style="<{$item.css}>"<{/if}>
+                      >
+                    <{/if}>
+                    <{if $item.image}>
+                      <img src="<{$item.image}>"
+                           <{if $item.alt_title}>alt="<{$item.alt_title}>"<{/if}>
+                           <{$image_width}><{$image_height}>
+                      /><br />
+                      <{/if}>
+                      <{$item.title}>
+                      <{if $item.link}></a><{/if}>
+                      </td>
+<{/foreach}>
+<{section name="" loop=$cols-$i}><td>&nbsp;</td><{/section}>
+</tr>
+</table>

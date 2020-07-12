@@ -1,0 +1,56 @@
+<{counter start=0 print=false assign=count}>
+
+      <table class="outer">
+                  <th class="header" width="20%">  Smarty     </th><th>     Value               </th></tr>
+                  <tr class="odd">      <td>&lt;{$title}&gt;            </td><td>     <{$title}>            </td></tr>
+                  <tr class="even">     <td>&lt;{$background}&gt;       </td><td>     <{$background}>       </td></tr>
+                  <tr class="odd">      <td>&lt;{$admin}&gt;            </td><td>     <{$admin}>            </td></tr>
+                  <tr class="even">     <td>&lt;{$cols}&gt;             </td><td>     <{$cols}>             </td></tr>
+                  <tr class="odd">      <td>&lt;{$mode}&gt;             </td><td>     <{$mode}>             </td></tr>
+                  <tr class="even">     <td>&lt;{$banner_url}&gt;       </td><td>     <{$banner_url}>       </td></tr>
+                  <tr class="odd">      <td>&lt;{$banner}&gt;           </td><td>     <{$banner}>           </td></tr>
+                  <tr class="odd">      <td>&lt;{$duration}&gt;         </td><td>     <{$duration}>         </td></tr>
+                  <tr class="even">     <td>&lt;{$transition}&gt;       </td><td>     <{$transition}>       </td></tr>
+                  <tr class="odd">      <td>&lt;{$image_max_width}&gt;  </td><td>     <{$image_max_width}>  </td></tr>
+                  <tr class="even">     <td>&lt;{$image_max_height}&gt; </td><td>     <{$image_max_height}> </td></tr>
+                  <tr class="odd">      <td>&lt;{$ii}&gt;                </td><td>    <{$ii}>              </td></tr>
+                  <tr class="odd">      <td>&lt;{$i}&gt;                </td><td>     <{$i}>                </td></tr>
+       </table>
+
+
+
+<hr />
+
+       <table cellspacing="20">
+       <tr><td>
+
+       <{foreach item=item from=$data_list}>
+
+         <{if $i==$count}>
+         </td>
+         <td>
+         <{counter start=0 print=false assign=count}>
+         <{/if}>
+
+         <h4><{$item.num}>. <{$item.title}></h4>
+
+      <table class="outer">
+                  <th class="header" width="20%">  Smarty     </th><th width="80%">     Value               </th></tr>
+                  <tr class="odd">     <td>&lt;{$id}&gt;       </td><td>     <{$item.id}>        </td></tr>
+                  <tr class="even">    <td>&lt;{$pid}&gt;      </td><td>     <{$item.pid}>       </td></tr>
+                  <tr class="odd">     <td>&lt;{$catid}&gt;    </td><td>     <{$item.catid}>     </td></tr>
+                  <tr class="even">    <td>&lt;{$type}&gt;     </td><td>     <{$item.type}>      </td></tr>
+                  <tr class="odd">     <td>&lt;{$status}&gt;   </td><td>     <{$item.status}>    </td></tr>
+                  <tr class="even">    <td>&lt;{$weight}&gt;   </td><td>     <{$item.weight}>    </td></tr>
+                  <tr class="odd">     <td>&lt;{$title}&gt;    </td><td>     <{$item.title}>     </td></tr>
+                  <tr class="even">    <td>&lt;{$alt_title}&gt;</td><td>     <{$item.alt_title}> </td></tr>
+                  <tr class="odd">     <td>&lt;{$link}&gt;     </td><td style="font-size:80%;">     <{$item.link}>      </td></tr>
+                  <tr class="even">    <td>&lt;{$query}&gt;    </td><td>     <{$item.query}>     </td></tr>
+                  <tr class="odd">     <td>&lt;{$target}&gt;   </td><td>     <{$item.target}>    </td></tr>
+                  <tr class="even">    <td>&lt;{$image}&gt;    </td><td style="font-size:80%;">     <{$item.image}>     </td></tr>
+       </table>
+                <{counter print=false assign=count}>
+        <{/foreach}>
+        
+        </td></tr>
+        </table>

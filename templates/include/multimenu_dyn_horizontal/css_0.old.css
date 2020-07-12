@@ -1,0 +1,47 @@
+#navcontainer ul {
+  text-align:center;
+}
+
+/* Main links */
+li.multimenu {
+  list-style: none; 
+  margin: -3px;
+  _margin: 0px;
+  display: inline;
+}
+
+li.multimenu a {
+  cursor:pointer;
+  padding: 3px 0.5em;
+  margin: 5px;
+  border: 1px outset Black;
+  background: White;
+}
+
+li.multimenu :hover {
+  background: lightGrey;
+}
+
+/* Sub links */
+#dropmenudiv_{id}{
+  position:absolute;
+  margin-left:10px;
+  margin-top:-1px;
+  border: 1px outset black;
+}
+
+#dropmenudiv_{id} a{
+  width: 160px;
+  display: block;
+  text-indent: 12px;
+  border-bottom: 1px solid black;
+  padding: 4px 0;
+  background: url('{xoops_url}/modules/multimenu/templates/include/multimenu_dyn_horizontal/arrow_right.gif');
+  background-repeat: no-repeat;
+  background-position: left 50%;
+}
+
+#dropmenudiv_{id} a:hover{
+  background-color:lightGrey;
+
+}

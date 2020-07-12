@@ -1,0 +1,66 @@
+<table class="Outer">
+       <tr>
+          <th width="25%" colspan="2"><{$title}></th>
+          <th width="75%"><{$item}></th>
+       </tr>
+
+<{foreach item=item from=$data_list}>
+
+  <{if $item.link_status==top || $item.link_status==link}>
+  <{if $previous_status==sublink}></ol>
+         </td>
+       </tr>
+  <{/if}>
+       <tr class="<{cycle values="odd,even"}>">
+         <td style="font-weight:bold;text-align:center;">
+                   <{$item.num_main}>.
+         </td>
+         <td style="font-weight:bold;text-align:center;">
+                   <{if $item.link}>
+
+                      <a   href="<{$item.link}>"
+                           <{$item.target}>
+                           <{if $item.alt_title}>title="<{$item.alt_title}>"<{/if}>
+                           <{if $item.css}>style="<{$item.css}>"<{/if}>
+                      >
+                    <{/if}>
+                    <{if $item.image}>
+                      <img src="<{$item.image}>"
+                           <{if $item.alt_title}>alt="<{$item.alt_title}>"<{/if}>
+                           <{$image_width}><{$image_height}>
+                      /><br />
+                      <{/if}>
+                      <{$item.title}>
+                      <{if $item.link}></a><{/if}>
+
+         </td>
+         <td>
+                      <{$item.alt_title}>
+  <{elseif $item.link_status==sublink}>
+  <{if $previous_status==top || $previous_status==link}><ol><{/if}>
+                     <{if $item.link}>
+                      <li>
+                      <a   href="<{$item.link}>"
+                           <{$item.target}>
+                           <{if $item.alt_title}>title="<{$item.alt_title}>"<{/if}>
+                           <{if $item.css}>style="<{$item.css}>"<{/if}>
+                      >
+                    <{/if}>
+                    <{if $item.image}>
+                      <img src="<{$item.image}>"
+                           <{if $item.alt_title}>alt="<{$item.alt_title}>"<{/if}>
+                           align="absmiddle"
+                           <{$image_width}><{$image_height}>
+                      />
+                      <{/if}>
+                      <{$item.title}>
+                      <{if $item.link}></a><{/if}>
+                      </li>
+  <{/if}>
+
+        <{assign var=previous_status value=$item.link_status}>
+        <{/foreach}>
+        <{if $previous_status==sublink}></ol><{/if}>
+          </td>
+        </tr>
+</table>

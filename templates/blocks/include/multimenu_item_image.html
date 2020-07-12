@@ -1,0 +1,77 @@
+<{counter start=1 print=false assign=count}>
+<{math assign=col_width equation="round(y / x)" x=$block.cols y=100}>
+
+<table>
+  <tr>
+
+        <{foreach item=item from=$block.datas}> 
+
+          <{foreach item=image from=$item.images}>
+
+                   <{if $count > $block.cols}>
+                            </tr>
+                            <tr>
+                       <{counter start=1 print=false assign=count}>
+                       <{/if}>
+                       <{counter print=false assign=count}>
+
+          <td width="<{$col_width}>%" align="center">
+          <a
+                       onclick="pop=window.open('',
+                                                'wclose', 
+                                                'width=<{$image.image_width+20}>, height=<{$image.image_height+20}>, dependent=yes, toolbar=no, scrollbars=no, status=no, resizable=yes, fullscreen=no, titlebar=no, left=189, top=0',
+                                                'false'); 
+                                pop.focus();"
+                       href="<{$item.image}><{$image.image_file}>"
+                       target="wclose"
+                       title="<{$item.alt_title}> : <{$image.image_file}>">
+
+              <img src="<{$item.thumb}><{$image.image_file}>"
+                   alt="<{$item.title}>"
+                   style="width:<{$image.thumb_max_width}>px; border: 2px outset #616E8E; spacing:2px"
+              />
+              <br />
+              <{$item.title}>
+              </a>
+          </td>
+          <{/foreach}>
+
+          <{math assign=last equation="x - y" x=$block.cols y=$count-1}>
+          <{section name=td loop=$last}>
+          <td>&nbsp;</td>
+          <{/section}>
+          </tr>
+
+<{if $item.description}>
+<tr>
+  <td colspan="<{$block.cols}>">
+  <{$item.description}>
+  </td>
+</tr>
+<{/if}>
+<{if $block.thisgal}>
+          <tr>
+          <td colspan="<{$block.cols}>" style="text-align:right;">
+               <a href="<{if $block.alt_url}><{$block.alt_url}><{else}><{$block.xoops_url}>/modules/multimenu/item.php?id=<{$item.id}><{/if}>"
+                  title="<{$block.thisgal}>"
+                  >
+                  <{$block.thisgal}>
+               </a>
+          </td>
+          </tr>
+<{/if}>
+
+        <{/foreach}>
+
+   </tr>
+ </table>
+
+<{if $block.home}>
+<div style="text-align:right;">
+               <a href="<{$block.xoops_url}>/modules/multimenu/"
+                  title="<{$block.home}>"
+                  >
+                  <{$block.home}>
+               </a>
+</div>
+<{/if}>

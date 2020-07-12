@@ -1,0 +1,47 @@
+<{counter start=0 print=false assign=count}>
+
+<marquee onmouseover="this.stop();"
+         onmouseout="this.start();"
+	 direction="up"
+	 style="width:100%;height:160px;"
+	 scrollamount="3"
+	 scrolldelay="3">
+
+<{foreach item=item from=$data_list}>
+<{if $item.link_status==top}><ol>
+<{elseif $item.link_status==sublink AND $previous_status==top}><ol>
+<{elseif $item.link_status==sublink AND $previous_status==link}><ol>
+<{elseif $item.link_status==link    AND $previous_status==sublink}></ol>
+<{/if}><{assign var=previous_status value=$item.link_status}>
+
+                  <li class="<{$item.type}>">
+
+                   <{if $item.link}>
+                      <a   class="<{$item.link_status}>"
+                           href="<{$item.link}>"
+                           <{$item.target}>
+                           title="<{$item.alt_title}>"
+                      >
+                    <{/if}>
+                    <{if $item.image}>
+                      
+                      <img src="<{$item.image}>"
+                           alt="<{$item.alt_title}>"
+                           align="absmiddle"
+                           <{$image_width}><{$image_height}>
+                      />
+
+                    <{/if}>
+
+                      <{$item.title}>
+
+                      <{if $item.link}></a><{/if}>
+                      
+                      </li>
+        <{/foreach}>
+<{if     $previous_status==sublink}>   </ol>
+<{/if}>
+
+         </ol>
+
+</marquee>

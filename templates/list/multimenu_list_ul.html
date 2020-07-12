@@ -1,0 +1,15 @@
+<div class="head"><{$other}> <{$item}></div>
+<ul>
+   <{foreach item=item from=$items_list}>
+    <nobr><li>
+        <{if $item.id != $id}>
+          <a href="<{$item.urw}>" title="<{$item.title}> ">
+           <{$item.title}>
+          </a>
+        <{else}>
+            <{$item.title}>
+        <{/if}>
+        </li>
+    </nobr>
+  <{/foreach}>
+</ul>

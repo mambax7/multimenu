@@ -1,0 +1,17 @@
+
+<{if $banner}><div align="center">
+              <{$banner}></div><p /><{/if}>
+
+<{if $status==1}><a href="."><{$index}></a> > <{$title}><{/if}>
+<div class="item"<{if $background}> style="background: url('<{$background}>') transparent no-repeat center center;"<{/if}>>
+	<div class="itemHead">
+         <{$title}>
+             <{if $tpl_list && $item_display_selectmode}>
+             <span style="padding-left:65%;">
+                   <{include file="db:multimenu_tpl.html"}>
+             </span>
+             <{/if}>
+        </div><p />
+	<div class="itemBody">
+	
+	<div class="itemText"><{if $image}><img src="<{$image}>" align="left" /><{/if}><{$text}></div>

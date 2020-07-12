@@ -1,0 +1,36 @@
+
+<ul>
+<{foreach item=item from=$data_list}>
+
+  <{if $item.link_status==top}>
+  <{elseif $previous_status==top     AND $item.link_status==sublink}><ol>
+  <{elseif $previous_status==link    AND $item.link_status==sublink}><ol>
+  <{elseif $previous_status==sublink AND $item.link_status==link}>   </ol>
+  <{/if}><{assign var=previous_status value=$item.link_status}>
+
+                  <li>
+                   <{if $item.link}>
+
+                      <a   href="<{$item.link}>"
+                           <{if $item.popgen}><{$item.popgen}><{else}>
+                           <{$item.target}>
+                           <{/if}>
+                           <{if $item.alt_title}>title="<{$item.alt_title}>"<{/if}>
+                           <{if $item.css}>style="<{$item.css}>"<{/if}>
+                      >
+                    <{/if}>
+                    <{if $item.image}>
+                      <img src="<{$item.image}>"
+                           <{if $item.alt_title}>alt="<{$item.alt_title}>"<{/if}>
+                           align="absmiddle"
+                           <{$image_width}><{$image_height}>
+                      />
+                      <{/if}>
+                      <{$item.title}>
+                      <{if $item.link}></a><{/if}>
+                      </li>
+        <{/foreach}>
+<{if     $previous_status==sublink}>   </ol>
+<{/if}> 
+</ul>
+

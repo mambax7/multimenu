@@ -1,0 +1,13 @@
+<br />
+<div class="head"><{$other}> <{$item}> :
+  <{if $count_list >= 8}></div><{/if}>
+  <select size="<{if $count_list >= 8}>5<{/if}>"
+          name="select"
+          onchange="location=this.options[this.selectedIndex].value">
+
+   <{foreach item=item from=$items_list}>
+           <option value="<{$item.urw}>"<{if $item.id == $id}> selected<{/if}>><{$item.title}></option>
+   <{/foreach}>
+
+  </select>
+  <{if $count_list < 8}></div><{/if}>

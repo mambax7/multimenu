@@ -1,0 +1,41 @@
+<{assign var=ul value=0}>
+<ul>
+
+<{foreach item=item from=$data_list}>
+<{if $previous_status==sublink AND $item.link_status==link}>
+<{section name=foo start=0 loop=$ul step=1}></li>
+</ul>
+<{/section}>
+<{assign var=ul value=0}>
+ <{/if}>
+<{if ($previous_status==top OR $previous_status==link) AND $item.link_status==sublink}>
+<{assign var=ul value=$ul+1}>
+
+  <ul>
+<{/if}>
+<{if ($previous_status==sublink AND $previous_pid!=$item.pid) AND $item.link_status==sublink}>
+<{if $ul==1}>
+<{assign var=ul value=$ul+1}>
+
+    <ul>
+<{else}>
+<{section name=foo start=0 loop=1 step=1}>
+   </li>
+  </ul> 
+<{/section}>
+</li>
+<{assign var=ul value=1}>
+  <{/if}>
+<{/if}>
+<{if ($previous_status==top AND $item.link_status==link)
+  OR ($previous_status==link AND $item.link_status==link)
+  OR ($previous_status==sublink AND $item.link_status==sublink AND $previous_pid==$item.pid)}></li>
+<{/if}>
+     <li>[<{$ul}> & <{$previous_pid}>=<{$item.pid}>] : <{$item.title}><{assign var=previous_status value=$item.link_status}><{assign var=previous_pid value=$item.pid}><{/foreach}>
+<{section name=ul start=0 loop=$ul step=1}>
+</li>
+</ul>
+<{/section}>
+
+</li>
+</ul>

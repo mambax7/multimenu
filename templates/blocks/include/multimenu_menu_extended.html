@@ -1,0 +1,83 @@
+<{counter start=1 print=false assign=count}>
+
+<table class="outer">
+
+  <tr>
+    <th>
+        <{$block.num}>
+    </th>
+
+    <th>
+        <{$block.item}>
+    </th>
+
+<{if $block.descriptions}>
+    <th>
+        <{$block.descriptions}>
+    </th>
+<{/if}>
+
+<{if $block.admin}>
+    <th>
+        <{$block.admin}>
+    </th>
+
+  </tr>
+<{/if}>
+
+<{foreach item=item from=$block.datas}>
+<{cycle values='odd,even' assign=class}>
+  <tr>
+          <td width="5%" class="<{$class}>"><b><{$count}></b><{counter assign=count}></td>
+
+          <td width="30%" class="<{$class}>" align="center">
+
+                  <a
+                     href="<{$block.xoops_url}>/modules/multimenu/item.php?id=<{$item.id}>"
+                     title="<{$item.description}>"
+                  ><{if $item.logo}>
+                  <img src="<{$item.logo}>"
+                       style="width:<{$item.thumb_max_width}>px; border:2px outset grey; spacing:2px"
+                       alt="<{$item.title}> : <{$item.image_file}>"
+                  />
+                  <br />
+                  <{/if}>
+                  <{$item.title}>
+                  </a>
+          </td>
+          
+          <{if $block.descriptions}><td width="60%" class="<{$class}>"><{$item.description}></td> <{/if}>
+
+          <{if $block.admin}>
+          <td width="30%" class="<{$class}>">
+                    <nobr>
+                    <a href="<{$block.xoops_url}>/modules/multimenu/admin/index.php?admin=admin&op=edit&id=<{$item.id}>"
+                       title="<{$block.edit}>">
+                    <img src="<{$block.xoops_url}>/modules/multimenu/images/icon/edit.gif"
+                         alt="<{$block.edit}>" />
+                    </a> |
+                    <a href="<{$block.xoops_url}>/modules/multimenu/admin/index.php?admin=admin&op=dup&id=<{$item.id}>"
+                       title="<{$block.clone}>">
+                    <img src="<{$block.xoops_url}>/modules/multimenu/images/icon/duplicate.gif"
+                         alt="<{$block.clone}>" />
+                    </a>
+                    </nobr>
+
+          </td>
+          <{/if}>
+
+   </tr>
+
+<{/foreach}>
+
+
+ </table>
+
+ <div style="text-align:right;">
+          <a
+             href="<{$block.xoops_url}>/modules/multimenu/"
+             title=""
+          >
+          <{$block.home}>
+          </a>
+ </div>

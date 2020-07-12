@@ -1,0 +1,39 @@
+
+<!-- Start - Module:<{$module}> - Template:<{$mode}> -->
+
+<{if $css_link}>
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}><{$css_link}>" />
+<{/if}>
+
+<{if $css}>
+<style type="text/css">
+<{$css}>
+</style>
+<{/if}>
+
+<{include file="db:multimenu_header.html"}>
+<{if $css}><div id="multimenu_<{$menu}>"><{/if}>
+<{include file="db:$mode"}>
+<{if $css}></div><{/if}>
+
+<p />
+<{if $pagenav}>
+     <div style="padding-left:70%; width:60%; align:center;"><{$pagenav}></div>
+<{/if}>
+
+<{if $item_list}>
+  <{include file="db:$item_list"}>
+<{/if}>
+
+<{include file="db:multimenu_footer.html"}>
+
+<{if $admin && $is_admin && $edit_mode}>
+<div align="center" class="head">
+<p />
+<{$source_code}> : (<{$mode}>) <br />
+     <textarea style="color:Grey;" cols="80" rows="25">
+     <{include file="db:$mode"}>
+     </textarea>
+<p />
+</div>
+<{/if}>

@@ -1,0 +1,23 @@
+/* Sub links */
+#dropmenudiv_vert_{id}{
+  position:absolute;
+  margin-left:160px;
+  margin-top:-24px;
+  background-color: #FFF;
+  border: 1px outset black;
+}
+
+#dropmenudiv_vert_{id} a{
+  width: 160px;
+  display: block;
+  text-indent: 12px;
+  border-bottom: 1px solid #000;
+  padding: 4px 0;
+  background: url('{xoops_url}/modules/multimenu/templates/include/multimenu_dyn_vertical/arrow_down.gif');
+  background-repeat: no-repeat;
+  background-position: left 50%;
+}
+
+#dropmenudiv_vert_{id} a:hover{
+  background-color:#CCC;
+}

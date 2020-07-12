@@ -1,0 +1,28 @@
+
+<script language="JavaScript"
+        type="text/javascript" 
+        src="<{$xoops_url}><{$script_link}>">
+</script>
+
+<script language="JavaScript"
+        type="text/javascript">
+                
+        if (document.getElementById){
+        document.write('<div id="spinanchor" style="height:'+eval(eye.h+20)+'; text-align:left;"></div>')
+        eye.anchor=document.getElementById('spinanchor')
+        eye.spinmenu();
+        eye.x+=getposOffset(eye.anchor, "right") //relatively position it
+        eye.y+=getposOffset(eye.anchor, "bottom")  //relatively position it
+
+        //menuitem: eye.spinmenuitem(text, link, target)
+        <{foreach item=item from=$data_list}>
+        <{assign var=title value=$item.title|strip_tags}>
+        eye.spinmenuitem("<{$title}>", "<{$item.link}>", "<{if $item.target|stristr:"_blank" || $item.target|stristr:"wclose"}>_blank<{/if}>")
+        <{/foreach}>
+        eye.spinmenuclose();
+        }
+
+</script>
+
+
+ <div style="height:100px;"></div>

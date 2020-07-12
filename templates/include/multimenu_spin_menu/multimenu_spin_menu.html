@@ -1,0 +1,45 @@
+
+<script language="JavaScript"
+        type="text/javascript" 
+        src="<{$xoops_url}><{$script_link}>">
+</script>
+
+<script type="text/javascript">
+
+        /*
+        3D Spin Menu- By Petre Stefan (http://www.eyecon.ro) w/ changes by JK
+        Visit JavaScript Kit (http://www.javascriptkit.com) for script
+        Keep this notice intact!
+        */
+        
+        eye.isVertical = 0; //if it's vertical or horizontal [0|1]
+        eye.x = 100; // x offset from point of insertion on page
+        eye.y = 20; // y offset from point of insertion on page
+        eye.w = 150; // item's width
+        eye.h = 20; // height
+        eye.r = 100; // menu's radius
+        eye.v = 20; // velocity
+        eye.s = 8; // scale in space (for 3D effect)
+        eye.color = 'White'; // normal text color
+        eye.colorover = 'Black'; // mouseover text color
+        eye.backgroundcolor = 'Grey'; // normal background color
+        eye.backgroundcolorover = 'White'; // mouseover background color
+        eye.bordercolor = '#000000'; //border color
+        eye.fontsize = 12; // font size
+        eye.fontfamily = 'Arial'; //font family
+        if (document.getElementById){
+        document.write('<div id="spinanchor" style="height:'+eval(eye.h+20)+'; text-align:left;"></div>')
+        eye.anchor=document.getElementById('spinanchor')
+        eye.spinmenu();
+        eye.x+=getposOffset(eye.anchor, "right") //relatively position it
+        eye.y+=getposOffset(eye.anchor, "bottom")  //relatively position it
+        
+        //menuitem: eye.spinmenuitem(text, link, target)
+        <{foreach item=item from=$data_list}>
+        eye.spinmenuitem("<{$item.title}>", "<{$item.link}>", "<{$item.target}>")
+        <{/foreach}>
+        eye.spinmenuclose();
+        }
+</script>
+
+ <div style="height:100px;"></div>

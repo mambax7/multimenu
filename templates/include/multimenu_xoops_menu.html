@@ -1,0 +1,27 @@
+
+    <div id="mainmenu">
+<{foreach item=item from=$data_list}>
+  <{if     $item.link_status==top}>    <{assign var=class value='menuTop'}>
+  <{elseif $item.link_status==link}>   <{assign var=class value='menuMain'}>
+  <{elseif $item.link_status==sublink}><{assign var=class value='menuSub'}>
+  <{/if}>
+
+       <a   class="<{$class}>"
+            <{if $item.link}>href="<{$item.link}>"<{/if}>
+            <{$item.target}>
+            title="<{$item.alt_title}>"
+            <{if $item.css}> style="<{$item.css}>"<{/if}>
+       >
+
+  <{if $item.image}>
+       <img src="<{$item.image}>"
+            alt="<{$item.alt_title}>"
+            <{$image_width}><{$image_height}>
+            align="absmiddle"
+       />
+  <{/if}>
+  <{$item.title}>
+  <{if $item.link}></a><{/if}>
+<{/foreach}>
+
+    </div>

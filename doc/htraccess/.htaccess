@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /modules/multimenu/
+RewriteRule	([0-9]+)(-).*(\.html)$	item.php?id=$1	[L]

@@ -1,0 +1,70 @@
+<{counter start=0 print=false assign=count}>
+
+<style type='text/css'>
+        #imageContainer {
+        	position:relative;
+        	align:center;
+        	vertical-align:middle;
+        	margin:auto;
+        	overflow:auto;
+        	width:<{$block.max_width}>px;
+        	height:<{$block.max_height}>px;
+
+        }
+
+        #imageContainer img {
+        	display:none;
+        	position:absolute;
+        	top:0; left:0;
+        }
+
+</style>
+<script type="text/javascript">
+  var duration = 3000;
+  var transition = 3;
+</script>
+<script type="text/javascript" 
+        src="<{$block.xoops_url}>/modules/multimenu/templates/include/js/xfad.js"></script>
+
+
+  <{foreach item=item from=$block.datas}>
+                <a href="<{if $block.alt_url}><{$block.alt_url}><{else}><{$block.xoops_url}><{$block.xoops_url}>/modules/multimenu/item.php?id=<{$item.id}><{/if}>"
+                  title="<{$block.thisgal}> : <{$item.title}>"
+                  >
+    <div id="imageContainer">
+
+      <{foreach item=image from=$item.images}>
+
+      		<img src="<{$item.thumb}><{$image.image_file}>"
+      		     style="width:<{$image.thumb_max_width}>px; border:2px outset grey; spacing:2px"
+                     alt="<{$block.thisgal}> : <{$item.title}>" />
+
+                <{counter print=false assign=count}>
+      <{/foreach}>
+
+    </div>
+                </a>
+   <{/foreach}>
+
+   <{if $item.description}>
+<div>
+
+  <{$item.description}>
+
+</div>
+<{/if}>
+
+<{if $block.home}>
+<div style="text-align:right;">
+               <a href="<{if $block.alt_url}><{$block.alt_url}><{else}><{$block.xoops_url}>/modules/multimenu/<{/if}>"
+                  title="<{$block.home}>"
+                  >
+                  <{$block.home}>
+               </a>
+</div>
+<{/if}>
+
+
+
+
+
